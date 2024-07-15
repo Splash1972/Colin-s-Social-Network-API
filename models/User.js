@@ -1,7 +1,7 @@
 // setting up DB Schemas with Mongoose
 
-const { Schema, model } = require("mongoose");
-const moment = require('moment');
+const { Schema, model, Types } = require("mongoose");
+
 
 const UserSchema = new Schema({
     username: {
@@ -14,7 +14,11 @@ const UserSchema = new Schema({
         type: String,
         required: true,
         unique: true,
-        match: [/.+@+\..+/] //regex to match email format
+        validate: {
+            validator: function(v) {
+                return /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/.test(v); //regex to match email format
+            }
+        }
     },
     thoughts: [
         {
