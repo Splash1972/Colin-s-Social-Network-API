@@ -16,10 +16,11 @@ Here's a screenshot of Postman during testing:
 Here's a link to the video walkthrough:
 
 
-
+https://drive.google.com/file/d/1-lyTwC3xEKSnAxBdyp2pzQGX2AuCXApj/view?usp=sharing
 Technologies used:
 
 MondoDB
 Mongoose
 Express
 Postman
+Xpert Learning Assistant (provided through the bootcamp).  Helped a lot with the Schema setup and a ton of debugging

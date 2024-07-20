@@ -24,7 +24,7 @@ const userController = {
     // Update Users by ID
 
     updateUserById(req, res) {
-        User.findOneAndUpdate(req.params.id, req.body, { new: true })
+        User.findOneAndUpdate({ _id: req.params.userId }, req.body, { new: true })
             .then(userData => {
                 if (!userData) {
                     return res.status(404).json({ message: 'User not found' });
@@ -37,7 +37,7 @@ const userController = {
     // Delete user and/or users and the thoughts associated with them
 
     deleteUserById(req, res) {
-        User.findOneAndDelete(req.params.id)
+        User.findOneAndDelete({ _id: req.params.userId })
             .then(userData => {
                 if (!userData) {
                     return res.status(404).json({ message: 'User not found' });
@@ -75,9 +75,9 @@ const userController = {
             if (!dbUserData) {
               return res.status(404).json({ message: "No user with this id!" });
             }
-            // check if friend was removed
+            // Check if friend was deleted
             const removed = !dbUserData.friends.includes(params.friendId);
-            // return response with appropriate message
+            // return response with message
             if (removed) {
               res.json({ message: "Friend removed successfully!", dbUserData });
             } else {
